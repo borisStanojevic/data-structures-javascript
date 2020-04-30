@@ -16,9 +16,9 @@ class Vector {
 
   // O(1)
   pop() {
-    const poppedElement = elements[elementsCount - 1];
-    delete elements[elementsCount - 1];
-    elementsCount--;
+    const poppedElement = this.elements[this.elementsCount - 1];
+    delete this.elements[this.elementsCount - 1];
+    this.elementsCount--;
 
     return poppedElement;
   }
@@ -28,8 +28,8 @@ class Vector {
     const element = this.elements[index];
     this.shiftElements(index);
 
-    delete this.elements[elementsCount - 1];
-    elementsCount--;
+    delete this.elements[this.elementsCount - 1];
+    this.elementsCount--;
   }
 
   shiftElements(startIndex) {
@@ -44,5 +44,10 @@ const vector = new Vector();
 vector.push(3);
 vector.push(6);
 vector.push(9);
+console.log(vector);
 
+vector.pop();
+console.log(vector);
+
+vector.delete(1);
 console.log(vector);
