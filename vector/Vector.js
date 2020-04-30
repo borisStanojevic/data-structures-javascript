@@ -26,53 +26,71 @@ class Vector {
   // O(n)
   shift() {
     const removedElement = this.elements[0];
-    delete this.elements[0];
 
-    this.shiftElements(0);
+    this.shiftElementsLeft(0);
     this.elementsCount--;
 
     return removedElement;
   }
 
   // O(n)
-  unshift() {
-    // Add to the front.
+  unshift(element) {
+    this.shiftElementsRight(0);
+    this.elements[0] = element;
+    
+    return ++this.elementsCount;
   }
 
   // O(n)
   splice(index) {
     const removedElement = this.elements[index];
 
-    this.shiftElements(index);
+    this.shiftElementsLeft(index);
     this.elementsCount--;
 
     return removedElement;
   }
 
-  shiftElements(startIndex) {
+  shiftElementsLeft(startIndex) {
     for (let i = startIndex; i < this.elementsCount - 1; i++) {
       this.elements[i] = this.elements[i + 1];
     }
     delete this.elements[this.elementsCount - 1];
   }
 
+  shiftElementsRight(startIndex) {
+    for(let i = this.elementsCount - 1; i >= startIndex; i--) {
+      this.elements[i+1] = this.elements[i];
+    }
+    delete this.elements[0];
+  }
+
 }
 
-const vector = new Vector();
+// const vector = new Vector();
 
-vector.push(3);
-vector.push(6);
-vector.push(9);
-console.log(vector);
-
-// vector.shift();
+// vector.push(3);
+// vector.push(6);
+// vector.push(9);
 // console.log(vector);
 
 // vector.shift();
 // console.log(vector);
 
-vector.pop();
-console.log(vector);
+// vector.unshift(33);
+// console.log(vector);
 
-vector.delete(1);
-console.log(vector);
+// vector.unshift(55);
+// console.log(vector);
+
+// vector.shift();
+// console.log(vector);
+
+// vector.shift();
+// console.log(vector);
+
+// vector.pop();
+// console.log(vector);
+
+// vector.delete(1);
+// console.log(vector);
