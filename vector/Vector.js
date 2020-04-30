@@ -77,11 +77,14 @@ class Vector {
 // vector.shift();
 // console.log(vector);
 
-// vector.unshift(33);
+// const y = vector.unshift(33);
 // console.log(vector);
+// console.log("Current size " + y);
 
-// vector.unshift(55);
+// const x = vector.unshift(55);
 // console.log(vector);
+// console.log("Current size " + x);
+
 
 // vector.shift();
 // console.log(vector);
