@@ -7,18 +7,15 @@ class HashTable {
   put(key, value) {
     const index = this._getIndex(key);
 
-    const entry = new Entry(key, value);
-
     if(!this.data[index])
       this.data[index] = [];
-    this.data[index].push(entry);
+    this.data[index].push(new Entry(key, value));
   }
 
   get(key) {
     const index = this._getIndex(key);
 
-    if(!this.data[index])
-      return null 
+    if(!this.data[index]) return null;
     
     for(const entry of this.data[index])
       if(entry.key === key)
@@ -30,8 +27,7 @@ class HashTable {
   remove(key) {
     const index = this._getIndex(key);
 
-    if(!this.data[index])
-      throw new Error("There is no bucket for the given key.")
+    if(!this.data[index]) throw new Error("There is no bucket for the given key.")
 
     let bucket = this.data[index];
 
@@ -87,12 +83,12 @@ class Entry {
 
 }
 
-// const hashTable = new HashTable(10);
-// hashTable.put("mitar@grand.rs", 99_999);
-// hashTable.put("brena@grand.rs", 999_999);
-// hashTable.put("jashar@grand.rs", 9_999_999);
+const hashTable = new HashTable(10);
+hashTable.put("mitar@grand.rs", 99_999);
+hashTable.put("brena@grand.rs", 999_999);
+hashTable.put("jashar@grand.rs", 9_999_999);
 
-// hashTable.remove("jashar@grand.rs");
+hashTable.remove("jashar@grand.rs");
 
-// console.log(hashTable.getKeys());
-// console.log(hashTable.getValues());
+console.log(hashTable.getKeys());
+console.log(hashTable.getValues());
