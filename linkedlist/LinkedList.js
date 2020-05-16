@@ -1,8 +1,10 @@
 class Node {
+
   constructor(data) {
     this.data = data;
     this.next = null;
   }
+  
 }
 
 class LinkedList {
@@ -47,7 +49,12 @@ class LinkedList {
   }
 
   remove(index) {
-    
+    const current = this._getNodeAtIndex(index - 1);
+
+    const nodeToRemove = current.next;
+    current.next = nodeToRemove.next;
+
+    this.length--;
   }
 
   _getNodeAtIndex(index) {
@@ -62,7 +69,6 @@ class LinkedList {
 
     return current;
   }
-
 }
 
 function printLinkedList(linkedList) {
@@ -79,5 +85,11 @@ linkedList.append(5);
 linkedList.append(1);
 
 linkedList.insert(69, 0);
+
+printLinkedList(linkedList);
+
+console.log("\n\n");
+
+linkedList.remove(1);
 
 printLinkedList(linkedList);

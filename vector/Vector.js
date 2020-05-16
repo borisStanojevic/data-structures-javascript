@@ -61,34 +61,3 @@ class Vector {
   }
 
 }
-
-// const vector = new Vector();
-
-// vector.push(3);
-// vector.push(6);
-// vector.push(9);
-// console.log(vector);
-
-// vector.shift();
-// console.log(vector);
-
-// const y = vector.unshift(33);
-// console.log(vector);
-// console.log("Current size " + y);
-
-// const x = vector.unshift(55);
-// console.log(vector);
-// console.log("Current size " + x);
-
-
-// vector.shift();
-// console.log(vector);
-
-// vector.shift();
-// console.log(vector);
-
-// vector.pop();
-// console.log(vector);
-
-// vector.delete(1);
-// console.log(vector);

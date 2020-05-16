@@ -82,13 +82,3 @@ class Entry {
   }
 
 }
-
-const hashTable = new HashTable(10);
-hashTable.put("mitar@grand.rs", 99_999);
-hashTable.put("brena@grand.rs", 999_999);
-hashTable.put("jashar@grand.rs", 9_999_999);
-
-hashTable.remove("jashar@grand.rs");
-
-console.log(hashTable.getKeys());
-console.log(hashTable.getValues());
