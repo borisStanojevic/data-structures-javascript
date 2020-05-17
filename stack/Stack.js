@@ -1,3 +1,12 @@
+class Node {
+  
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+
+}
+
 class Stack {
 
   constructor() {
@@ -41,14 +50,6 @@ class Stack {
 
   isEmpty() {
     return this.length === 0;
-  }
-
-}
-
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
   }
 
 }
