@@ -9,8 +9,9 @@ class Stack {
   push(data) {
     const element = new Node(data);
 
-    if(isEmpty()){
+    if(this.isEmpty()){
       this.top = element;
+      this.bottom = element;
     }
     else {
       const current = this.top;
@@ -22,7 +23,7 @@ class Stack {
   }
 
   pop() {
-    if(!isEmpty()) throw new Error("The stack is empty. Nothing to pop.");
+    if(this.isEmpty()) throw new Error("The stack is empty. Nothing to pop.");
 
     if(this.top === this.bottom) this.bottom = null;
 
@@ -51,5 +52,3 @@ class Node {
   }
 
 }
-
-const stack = new Stack();
