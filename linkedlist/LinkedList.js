@@ -3,6 +3,7 @@ class Node {
   constructor(data) {
     this.data = data;
     this.next = null;
+    this.previous = null;
   }
   
 }
@@ -18,6 +19,7 @@ class LinkedList {
   append(data) {
     const newNode = new Node(data);
 
+    newNode.previous = this.tail;
     this.tail.next = newNode;
     this.tail = newNode;
 
@@ -28,6 +30,7 @@ class LinkedList {
     const newNode = new Node(data);
 
     newNode.next = this.head;
+    this.head.previous = newNode;
     this.head = newNode;
 
     this.length++;
@@ -38,27 +41,38 @@ class LinkedList {
     else if(index === this.length - 1) this.append(data);
     else {
       const newNode = new Node(data);
+
       const current = this._getNodeAtIndex(index - 1);
+      const successor = current.next;
       
-      const next = current.next;
       current.next = newNode;
-      newNode.next = next;
+      newNode.previous = current;
+      newNode.next = successor;
+      successor.previous = newNode;
     }
 
     this.length++;
   }
 
   remove(index) {
-    const current = this._getNodeAtIndex(index - 1);
+    const preceeding = this._getNodeAtIndex(index - 1);
+    const nodeToRemove = preceeding.next;  
+    const successor = nodeToRemove.next;
 
-    const nodeToRemove = current.next;
-    current.next = nodeToRemove.next;
+    preceeding.next = successor;
+    successor.previous = preceeding;  
+
+    nodeToRemove.next = null;
+    nodeToRemove.previous = null;
 
     this.length--;
   }
 
   _getNodeAtIndex(index) {
-    if(index >= this.length || index < 0) throw new Error("Index out of bounds.");
+    if(index > this.length - 1 || index < 0) throw new Error("Index out of bounds.");
+
+    if(index === 0) return this.head;
+    if(index === this.length - 1) return this.tail;
 
     let currentIndex = 0;
     let current = this.head;
