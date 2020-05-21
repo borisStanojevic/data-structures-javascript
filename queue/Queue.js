@@ -21,18 +21,22 @@ class Queue {
       this.front = node;
       this.rear = node;
     }
-    else{
+    else {
       this.rear.next = node;
       this.rear = node;
     }
 
     this.length++;
-
-    return this;
   }
 
   dequeue() {
+    if(!this.isEmpty) throw new Error("The queue is empty.");
 
+    if(this.front === this.rear) this.front = null;
+
+    this.front = this.front.next;
+    
+    this.length--;
   }
 
   peek() {
@@ -44,9 +48,3 @@ class Queue {
   }
 
 }
-
-const queue = new Queue();
-
-console.log(queue.enqueue("Mile"));
-console.log(queue.enqueue("Brena"));
-console.log(queue.enqueue("Saban"));
